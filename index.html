@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="flex flex-col h-screen fixed top-0 w-full">
+    <nav class="flex flex-col bg-gray-100 rounded-b-xl p-2 z-50 relative">
+      <div class="flex justify-between m-1">
+        <div class="flex items-center gap-2">
+          <a href="{% url 'main:main' %}" class="text-2xl font-bold">3DChronicleHub</a>
+        </div>
+      </div>
+
+      <ul class="flex gap-2 bg-gray-200 p-2 rounded-full">
+        <li>
+          <button id="button-start"
+            class="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-center text-white bg-green-500 rounded-full hover:bg-green-700">
+            Старт
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <main id='main-container' class="flex-1">
+      <div class="relative h-full w-full">
+        <canvas class="rounded-lg h-full w-full" id="main-canvas"></canvas>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-5 h-5 rounded-full bg-red-500"></div>
+        </div>
+      </div>
+      
+      <div id="message-container" class=" absolute inset-0 z-40 ">
+        <div class="bg-opacity-100 flex items-center justify-center h-screen">
+          <div class="bg-white p-8 shadow-md rounded-md max-w-md w-full">
+              <h1 class="text-2xl font-bold mb-4">3DChronicleHub</h1>
+              <p id="message-data" class="mb-4"></p>
+              <a href="#" id="link-model" class="hidden">Нажмите Enter чтобы перейти по ссылке
+              </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+  <script>
+    const path_model = 'public/InteriorTest.obj'
+    const dataJson = {"lights":[{"metadata":{"version":4.6,"type":"Object","generator":"Object3D.toJSON"},"object":{"uuid":"171be6e7-1f47-4d35-82ae-6fb3bf18d4d9","type":"PointLight","layers":1,"matrix":[1,0,0,0,0,1,0,0,0,0,1,0,-0.28585532471716724,1.7258483769243218,0.18522438679325098,1],"up":[0,1,0],"color":16777215,"intensity":0.5,"distance":10,"decay":2,"shadow":{"camera":{"uuid":"362c8171-94f7-4962-8d49-8c94db3d0c1b","type":"PerspectiveCamera","layers":1,"up":[0,1,0],"fov":90,"zoom":1,"near":0.5,"far":500,"focus":10,"aspect":1,"filmGauge":35,"filmOffset":0}}}},{"metadata":{"version":4.6,"type":"Object","generator":"Object3D.toJSON"},"object":{"uuid":"4fd15717-14b7-46ae-af16-1cae87686743","type":"PointLight","layers":1,"matrix":[1,0,0,0,0,1,0,0,0,0,1,0,5.957266340681218,2.2795990124135797,0.6356484119115984,1],"up":[0,1,0],"color":16777215,"intensity":0.5,"distance":10,"decay":2,"shadow":{"camera":{"uuid":"36c1fb76-6a93-4680-bf96-3b891fe28406","type":"PerspectiveCamera","layers":1,"up":[0,1,0],"fov":90,"zoom":1,"near":0.5,"far":500,"focus":10,"aspect":1,"filmGauge":35,"filmOffset":0}}}}],"elements":[{"metadata":{"version":4.6,"type":"Object","generator":"Object3D.toJSON"},"geometries":[{"uuid":"a958f790-98db-4f41-8b9c-a8f7b9bb976b","type":"SphereGeometry","radius":0.5,"widthSegments":32,"heightSegments":32,"phiStart":0,"phiLength":6.283185307179586,"thetaStart":0,"thetaLength":3.141592653589793}],"materials":[{"uuid":"f07284e4-5ac2-45a2-ab04-12339f1072c1","type":"MeshStandardMaterial","color":65280,"roughness":1,"metalness":0,"emissive":0,"envMapIntensity":1,"depthFunc":3,"depthTest":true,"depthWrite":true,"colorWrite":true,"stencilWrite":false,"stencilWriteMask":255,"stencilFunc":519,"stencilRef":0,"stencilFuncMask":255,"stencilFail":7680,"stencilZFail":7680,"stencilZPass":7680}],"object":{"uuid":"ffb352f2-476f-4097-879c-b066115e97f8","type":"Mesh","userData":{"message":"fghfghfghfgh","url":""},"layers":1,"matrix":[1,0,0,0,0,1,0,0,0,0,1,0,5.0415640852077965,2.064833118454203,2.570691094529792,1],"up":[0,1,0],"geometry":"a958f790-98db-4f41-8b9c-a8f7b9bb976b","material":"f07284e4-5ac2-45a2-ab04-12339f1072c1"}},{"metadata":{"version":4.6,"type":"Object","generator":"Object3D.toJSON"},"geometries":[{"uuid":"4328459e-0a48-4513-aba5-c91ba93a885c","type":"SphereGeometry","radius":0.5,"widthSegments":32,"heightSegments":32,"phiStart":0,"phiLength":6.283185307179586,"thetaStart":0,"thetaLength":3.141592653589793}],"materials":[{"uuid":"d6a7f2ac-f0e3-4e08-b703-d0784e0763d7","type":"MeshStandardMaterial","color":65280,"roughness":1,"metalness":0,"emissive":0,"envMapIntensity":1,"depthFunc":3,"depthTest":true,"depthWrite":true,"colorWrite":true,"stencilWrite":false,"stencilWriteMask":255,"stencilFunc":519,"stencilRef":0,"stencilFuncMask":255,"stencilFail":7680,"stencilZFail":7680,"stencilZPass":7680}],"object":{"uuid":"b23f0076-7248-4a98-887b-750a35e9ab08","type":"Mesh","userData":{"message":"thytjhytjytj","url":""},"layers":1,"matrix":[1,0,0,0,0,1,0,0,0,0,1,0,4.500499113537013,1.5643655419505214,-1.191791676192823,1],"up":[0,1,0],"geometry":"4328459e-0a48-4513-aba5-c91ba93a885c","material":"d6a7f2ac-f0e3-4e08-b703-d0784e0763d7"}}]}
+  </script>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
